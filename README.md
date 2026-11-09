@@ -40,7 +40,7 @@
 | Option | Avantages | Inconvénients |
 |---|---|---|
 | Mise à jour de l'existant | Simple, coût réduit | Matériel ancien conservé, performances limitées, évolution difficile |
-| Migration vers le cloud | Maintenance simplifiée, externalisation | Dépendance à la connexion internet, risque lié à la connectivité du territoire insulaire (liens sous-marins, intempéries) |
+| Migration vers le cloud | Maintenance simplifiée, externalisation | Dépendance à la connexion internet, risque lié à la connectivité du territoire (liens sous-marins, intempéries) |
 | **Renouvellement de l'infra locale (retenu)** | Maîtrise, performances, services disponibles localement | Investissement matériel, maintenance à la charge du service |
 
 **Décision** : renouveler l'infrastructure locale en gardant une architecture virtualisée. Le critère déterminant était la continuité de service face à une connectivité WAN contrainte.
