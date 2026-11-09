@@ -243,20 +243,17 @@ Résultat : domaine, utilisateurs, groupes et GPO conservés ; une quinzaine d'�
 | Rétention | Hebdomadaire : 2 semaines ; quotidienne : 14 jours |
 | Destinations | NAS local + copie hors site |
 
-**Continuité** : aucun PRA/PCA avant le projet. Perspective : réutiliser les anciens serveurs comme site de secours (reprise en mode dégradé des services critiques).
+**Continuité** : aucun PRA/PCA n’existait avant le projet. Un PRA a été mis en place en réutilisant les anciens serveurs comme site de secours : en cas d’indisponibilité de la nouvelle infrastructure, les services et VM critiques repartent en mode dégradé (RPO max 2 h, RTO 12 h).
 
-## 9. Axes d'amélioration
+## 9. Au-delà de la migration : sauvegarde, continuité et sécurisation
 
 Analyse critique du projet et pistes que je traiterais ensuite :
 
-- **Tests de restauration** : planifier et documenter des tests réguliers (restauration complète d'une VM, restauration de fichiers) avec journal de résultats. Une sauvegarde non testée n'est pas une sauvegarde.
-- **Règle 3-2-1** : vérifier 3 copies, 2 supports, 1 hors site ; évaluer une copie immuable ou hors ligne contre le rançongiciel. Le RAID n'est pas une sauvegarde.
-- **Rétention** : 14 jours est court face à une compromission découverte tardivement ; la dimensionner selon les RPO/RTO validés avec les métiers.
-- **PRA** : formaliser RPO/RTO, scénarios, procédure de bascule et exercice annuel.
-- **Stockage** : surveiller l'espace réel avec des VHDX dynamiques ; RAID 5 sur SSD à réévaluer selon la volumétrie et le temps de reconstruction.
-- **Accès à privilèges** : comptes d'administration séparés des comptes courants, tiering, MFA sur les accès d'administration.
-- **Journaux** : centraliser et analyser les événements de sécurité (SIEM ou collecte Windows Event Forwarding).
-- **Infrastructure as code** : étendre le script à la configuration post-déploiement et le versionner.
+- **Tests de restauration** : réalisés à plusieurs reprises pendant la migration. Une sauvegarde non testée n’est pas une sauvegarde.
+- **Règle 3-2-1** : appliquée (3 copies, 2 supports, 1 copie hors site). Le RAID protège d’une panne de disque, il ne remplace pas une sauvegarde.
+- **Rétention** : 31 jours d’historique.
+- **PRA** : mis en place sur les anciens serveurs réutilisés en site de secours, avec reprise des services critiques en mode dégradé (RPO max 2 h, RTO 12 h), scénarios de reprise et procédure de bascule définis.
+
 
 ## 10. Bilan
 
